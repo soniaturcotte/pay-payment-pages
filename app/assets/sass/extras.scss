@@ -1,5 +1,26 @@
+
+// Card payment page
+
 .payment-summary {
   border: 10px solid #DEE0E2;
   background-color: #F8F8F8;
   padding: 15px;
+}
+
+.card-stripe {
+  max-width: 360px;
+  margin-top: -8px;
+}
+
+.cvv {
+  max-height: 40px;
+  margin: -4px 0 0 15px;
+  vertical-align: middle;
+}
+
+.date-seperator {
+  float: left;
+  margin-top: 40px;
+  margin-left: -7px;
+  margin-right: 12px;
 }
