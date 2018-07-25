@@ -1,0 +1,268 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Enter card details
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="confirm-payment" method="post">
+        <h1 class="govuk-heading-l">
+        Enter card details
+        </h1>
+
+<!-- Card number -->
+
+      {% from "input/macro.njk" import govukInput %}
+
+      {{ govukInput({
+        label: {
+          classes: "govuk-!-font-weight-bold",
+          text: "Card number"
+        },
+        
+        classes: "govuk-!-width-three-quarters",
+        id: "card-number",
+        name: "card-number"
+      }) }}
+    
+      <div class="govuk-!-margin-bottom-6 card-stripe">
+        <img class="card-stripe" src="/public/images/card-stripe.png">
+
+        <p class="govuk-hint govuk-!-font-size-16">Accepted credit and debit card types</p>
+     </div>
+
+     <div class="govuk-inset-text">
+       There is a fee of £2.50 for using a corporate credit or debit card
+     </div>
+
+<!-- Expiry date -->
+
+    <div class="govuk-form-group govuk-!-margin-bottom-0">
+      <fieldset class="govuk-fieldset" aria-describedby="expiry-date-hint" role="group">
+        
+        <legend class="govuk-fieldset__legend govuk-!-margin-bottom-0">
+          <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">Expiry date</p>
+        </legend>
+        <span id="expiry-date-hint" class="govuk-hint">
+        For example, 07/20
+        </span>
+      
+        <div class="govuk-date-input" id="expiry-date">
+          <div class="govuk-date-input__item">
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-date-input__label" for="expiry-month">
+              Month
+            </label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-3 " id="expiry-month" name="expiry-month" type="number" pattern="[0-9]*">
+            </div>
+          </div>
+
+          <span class="govuk-body-l date-seperator">/</span>
+          
+          <div class="govuk-date-input__item">
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-date-input__label" for="expiry-year">
+              Year
+            </label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-3" id="expiry-year" name="expiry-year" type="number" pattern="[0-9]*">
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+<!-- Name on card -->
+
+    {{ govukInput({
+      label: {
+        classes: "govuk-!-font-weight-bold",
+        text: "Name on card"
+      },
+      
+      classes: "govuk-!-width-three-quarters",
+      id: "card-name",
+      name: "card-name"
+    }) }}
+
+<!-- Card security code -->
+    <div class="govuk-form-group">
+      <label class="govuk-label govuk-label--s" for="cvv">
+        Card security code
+      </label>
+      <span id="cvv-hint" class="govuk-hint">
+        The last 3 digits on the back of the card
+      </span>
+      <input class="govuk-input govuk-input--width-4 govuk-!-display-inline-block" id="cvv" name="cvv" type="tel" min="0" max="999">
+      <span class="govuk-!-display-inline-block cvv">
+        <img alt="image of the back of a bank card" src="/public/images/cvv.png" style="height: 40px;">
+      </span>
+    </div>
+
+<!-- Billing address -->
+
+    {% from "input/macro.njk" import govukInput %}
+    {% from "fieldset/macro.njk" import govukFieldset %}
+
+    {% call govukFieldset({
+      legend: {
+      text: "Billing address",
+      classes: "govuk-fieldset__legend--m govuk-!-margin-bottom-1",
+      isPageHeading: false
+      }
+
+    }) %}
+
+      <span id="expiry-date-hint" class="govuk-hint">
+        This is the address associated with the card
+      </span>
+
+      {{ govukInput({
+      label: {
+        classes: "govuk-!-font-weight-bold",
+        text: "County or territory"
+      },
+      classes: "govuk-!-width-three-quarters",
+      id: "address-county",
+      name: "address-county",
+      value: "United Kingdom"
+    }) }}
+
+    {{ govukInput({
+      label: {
+        classes: "govuk-!-font-weight-bold",
+        html: 'Building number or name and street <span class="govuk-visually-hidden">line 1 of 2</span>'
+      },
+      classes: "govuk-!-width-three-quarters",
+      id: "address-line-1",
+      name: "address-line-1",
+      value: "10 Example street"
+    }) }}
+
+    {{ govukInput({
+      label: {
+        html: '<span class="govuk-visually-hidden">Building number or name and street line 2 of 2</span>'
+      },
+      classes: "govuk-!-width-three-quarters",
+      id: "address-line-2",
+      name: "address-line-2"
+    }) }}
+
+    {{ govukInput({
+      label: {
+        classes: "govuk-!-font-weight-bold",
+        text: "Town or city"
+      },
+      classes: "govuk-!-width-three-quarters",
+      id: "address-town",
+      name: "address-town",
+      value: "Fake town"
+    }) }}
+
+    {{ govukInput({
+      label: {
+        classes: "govuk-!-font-weight-bold",
+        text: "Postcode"
+      },
+      classes: "govuk-input--width-10",
+      id: "address-postcode",
+      name: "address-postcode",
+      value: "A01 23BC"
+    }) }}
+
+  {% endcall %}
+
+<!-- Email -->
+    {{ govukInput({
+      label: {
+        classes: "govuk-!-font-weight-bold",
+        text: "Email"
+      },
+
+      hint: {
+      text: "We'll send your payment confirmation here"
+      },
+      
+      classes: "govuk-!-width-three-quarters",
+      id: "email",
+      name: "email",
+      value: "example@email.com"
+    }) }}
+
+<!-- Check your answers style -->
+  <!-- <dl class="app-check-your-answers">
+    <div class="app-check-your-answers__contents">
+      <dt class="app-check-your-answers__question">
+        Billing address <br />
+        <span class="govuk-hint">
+        This is the address <br />associated with the card
+      </span>
+      </dt>
+      <dd class="app-check-your-answers__answer">
+         72 Guild Street<br />
+        London<br />
+        SE23 6FH
+      </dd>
+      <dd class="app-check-your-answers__change">
+        <a href="#">
+          Change<span class="govuk-visually-hidden"> billing address</span>
+        </a>
+      </dd>
+    </div>
+
+    <div class="app-check-your-answers__contents">
+      <dt class="app-check-your-answers__question">
+        Email <br />
+        <span id="expiry-date-hint" class="govuk-hint">
+        We’ll send your payment confirmation here
+      </span>
+      </dt>
+      <dd class="app-check-your-answers__answer">
+        sarah.philips@example.com
+      </dd>
+      <dd class="app-check-your-answers__change">
+        <a href="#">
+          Change<span class="govuk-visually-hidden"> email</span>
+        </a>
+      </dd>
+    </div>
+
+  </dl> -->
+
+
+<!-- Button -->
+    {% from "button/macro.njk" import govukButton %}
+
+    {{ govukButton({
+      classes: "govuk-!-margin-top-4 govuk-!-margin-bottom-4",
+      text: "Continue"
+    }) }}
+
+    <p>
+      <a href="#" class="govuk-link">Cancel payment</a>
+    </p>
+
+    </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <div class="payment-summary">
+        <h2 class="govuk-heading-m">Payment summary</h2>
+        <p class="govuk-!-font-weight-bold">An example payment description</p>
+        <p>
+          Amount: <span class="govuk-!-font-weight-bold">£20.00</span> <br />
+          Corporate card fee: <span class="govuk-!-font-weight-bold">£2.50</span>
+        </p>
+        <h3 class="govuk-body govuk-!-margin-bottom-0">Total amount:</h3>
+        <p class="govuk-heading-l govuk-!-padding-top-0 govuk-!-margin-bottom-0">£22.50</p>
+      </div>
+    </div>
+
+  </div>
+
+
+
+{% endblock %}
