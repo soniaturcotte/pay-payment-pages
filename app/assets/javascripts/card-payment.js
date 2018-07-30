@@ -11,7 +11,7 @@
 
   function updateTotalAmount (charge) {
     var $totalAmount = $('#total-amount');
-    var paymentAmount = 20;
+    var paymentAmount = 255;
 
     if (!charge) {
       charge = 0;

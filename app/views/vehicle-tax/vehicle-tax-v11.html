@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Tax your vehicle
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader({
+    "homepageUrl": "/",
+    "containerClasses": "govuk-width-container"
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+    	<form action="vehicle-tax-check" method="post">
+	      <h1 class="govuk-heading-xl">
+	        Tax your vehicle
+	      </h1>
+	      <p>Your V11 reminder letter</p>
+				<img class="govuk-!-width-one-third" src="/public/images/v11-diagram.png" alt="Diagram of a V11 letter showing the 16 digit reference">
+
+				<div class="govuk-form-group govuk-!-margin-top-5">
+				  <label class="govuk-label" for="v11-reference">
+				    16 digit reference number
+				  </label>
+				  <input class="govuk-input govuk-input--width-20" id="v-reference" name="v-reference" type="text" aria-describedby="v-reference">
+				</div>
+
+				<button type="submit" class="govuk-button">
+				  Continue
+				</button>
+		</form>
+
+		</div>
+	</div>
+
+
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Tax your vehicle
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader({
+    "homepageUrl": "/",
+    "containerClasses": "govuk-width-container"
+  }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  <div>
+    <a href="vehicle-tax-check" class="govuk-back-link">Back</a>
+  </div>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+		<form action="vehicle-tax-prepayment" method="post">
+			<div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+            <h1 class="govuk-fieldset__heading">
+              How do you want to pay?
+            </h1>
+          </legend>
+          <div class="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="how-to-pay-1" name="how-to-pay" type="radio" value="direct-debit">
+              <label class="govuk-label govuk-radios__label govuk-!-font-weight-bold" for="how-to-pay-1">
+                Direct Debit
+                <span class="govuk-hint">Choose between different recurring payment plans such as monthly or yearly</span>
+            </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="how-to-pay-2" name="how-to-pay" type="radio" value="card">
+              <label class="govuk-label govuk-radios__label govuk-!-font-weight-bold" for="how-to-pay-2">
+                Credit or debit card 
+                <span class="govuk-hint">Make a one-off payment for the whole year</span>
+            </label>
+            </div>
+
+          </div>
+        </fieldset>
+      </div>
+			  
+			<button type="submit" class="govuk-button">
+				Continue to card payment
+			</button>	
+		</form>
+		
+		</div>
+	</div>
+
+</main>
+
+{% endblock %}
