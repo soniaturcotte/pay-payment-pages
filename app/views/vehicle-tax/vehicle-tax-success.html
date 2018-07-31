@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Your payment has been successful
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="govuk-panel govuk-panel--confirmation">
+        <h2 class="govuk-panel__title">Your payment has been successful</h2>
+        <div class="govuk-panel__body">
+          Your reference number<br><strong>43236WPGV</strong>
+        </div>
+      </div>
+
+      <p>
+        We have sent you a confirmation email.
+      </p>
+
+      <table class="govuk-table">
+        <caption class="govuk-table__caption govuk-!-font-size-24 govuk-!-margin-top-4 govuk-!-margin-bottom-4">Payment summary</caption>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th class="govuk-table__header" scope="row">Payment of</th>
+            <td class="govuk-table__cell">Vehicle tax – 12 months from 1 September 2018</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th class="govuk-table__header" scope="row">
+              Amount <br />
+              Corporate card fee: 
+            </th>
+            <td class="govuk-table__cell">
+            £255.00 <br />
+            £2.50 <br />
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th class="govuk-table__cell" scope="row">Total amount:</th>
+            <td class="govuk-table__cell">£257.50</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+{% endblock %}

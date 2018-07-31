@@ -142,7 +142,7 @@
       classes: "govuk-!-width-three-quarters",
       id: "address-line-1",
       name: "address-line-1",
-      value: "10 Example street"
+      value: "72 Guild Street"
     }) }}
 
     {{ govukInput({
@@ -162,7 +162,7 @@
       classes: "govuk-!-width-three-quarters",
       id: "address-town",
       name: "address-town",
-      value: "Fake town"
+      value: "London"
     }) }}
 
     {{ govukInput({
@@ -173,7 +173,7 @@
       classes: "govuk-input--width-10",
       id: "address-postcode",
       name: "address-postcode",
-      value: "A01 23BC"
+      value: "SE23 6FH "
     }) }}
 
   {% endcall %}
@@ -191,8 +191,7 @@
       
       classes: "govuk-!-width-three-quarters",
       id: "email",
-      name: "email",
-      value: "example@email.com"
+      name: "email"
     }) }}
 
 
@@ -214,14 +213,13 @@
       <div class="payment-summary">
         <h2 class="govuk-heading-m">Payment summary</h2>
         <p class="govuk-!-font-weight-bold">Vehicle tax</p>
-<!-- This should appear when a corporate CC is used -->
+
         <p id="payment-summary-breakdown">
           Amount: <span class="govuk-!-font-weight-bold">£255.00</span> <br />
           Corporate card fee: <span class="govuk-!-font-weight-bold">£2.50</span>
         </p>
-<!-- end -->
+
         <h3 class="govuk-body govuk-!-margin-bottom-0">Total amount:</h3>
-<!-- Total amount should update -->
         <p class="govuk-heading-l govuk-!-padding-top-0 govuk-!-margin-bottom-0" id="total-amount"></p>
       </div>
     </div>

@@ -1,0 +1,99 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check your answers
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      
+      <form action="vehicle-tax-success" method="post">
+
+      <h1 class="govuk-heading-l">
+        Confirm your payment
+      </h1>
+
+      <!-- use additional modifier class to change column widths for multiple groups of questions and answers: -->
+      <!--   * `app-check-your-answers--short` for short questions -->
+      <!--   * `app-check-your-answers__questions-long` for long questions -->
+      <!--   * none for single group of q&a -->
+      <dl class="app-check-your-answers app-check-your-answers--short">
+        <div class="app-check-your-answers__contents">
+          <dt class="app-check-your-answers__question govuk-!-font-weight-regular">
+            Card number
+          </dt>
+          <dd class="app-check-your-answers__answer govuk-!-font-weight-bold">
+            ************5556
+          </dd>
+        </div>
+
+        <div class="app-check-your-answers__contents">
+          <dt class="app-check-your-answers__question govuk-!-font-weight-regular">
+            Expiry date
+          </dt>
+          <dd class="app-check-your-answers__answer govuk-!-font-weight-bold">
+            {{ data['expiry-month'] }}/{{ data['expiry-year'] }}
+          </dd>
+        </div>
+
+        <div class="app-check-your-answers__contents">
+          <dt class="app-check-your-answers__question govuk-!-font-weight-regular">
+            Name on card
+          </dt>
+          <dd class="app-check-your-answers__answer govuk-!-font-weight-bold">
+            {{ data['card-name'] }}
+          </dd>
+        </div>
+
+        <div class="app-check-your-answers__contents">
+          <dt class="app-check-your-answers__question govuk-!-font-weight-regular">
+            Billing address
+          </dt>
+          <dd class="app-check-your-answers__answer govuk-!-font-weight-bold">
+            {{ data['address-line-1'] }}, {{ data['address-line-2'] }} {{ data['address-town'] }}, {{ data['address-postcode'] }} {{ data['address-country'] }}
+          </dd>
+        </div>
+
+        <div class="app-check-your-answers__contents">
+          <dt class="app-check-your-answers__question govuk-!-font-weight-regular">
+            Confirmation email
+          </dt>
+          <dd class="app-check-your-answers__answer govuk-!-font-weight-bold">
+            {{ data['email'] }}
+          </dd>
+        </div>
+      </dl>  
+
+
+    {% from "button/macro.njk" import govukButton %}
+
+    {{ govukButton({
+      classes: "govuk-!-margin-top-4 govuk-!-margin-bottom-4",
+      text: "Confirm payment"
+    }) }}
+
+    <p>
+      <a href="#" class="govuk-link">Cancel payment</a>
+    </p>
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+      <div class="payment-summary">
+        <h2 class="govuk-heading-m">Payment summary</h2>
+        <p class="govuk-!-font-weight-bold">Vehicle tax</p>
+
+        <p id="payment-summary-breakdown">
+          Amount: <span class="govuk-!-font-weight-bold">£255.00</span> <br />
+          Corporate card fee: <span class="govuk-!-font-weight-bold">£2.50</span>
+        </p>
+
+        <h3 class="govuk-body govuk-!-margin-bottom-0">Total amount:</h3>
+        <p class="govuk-heading-l govuk-!-padding-top-0 govuk-!-margin-bottom-0" id="total-amount">257.50</p>
+      </div>
+    </div>
+
+    </div>
+  </div>
+{% endblock %}
+
