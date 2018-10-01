@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Enter card details
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+        Choose how you want to pay
+        </h1>
+
+      <button type="submit" class="govuk-button apple-button">
+        Buy with <span><img class="apple-icon" src="/public/images/apple-icon.png"></span> Pay
+      </button>
+      
+      <p>or</p>
+
+      <a href="card-payment" role="button" class="govuk-button">
+        Pay by debit or credit card
+      </a>
+
+    </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <div class="payment-summary">
+        <h2 class="govuk-heading-m">Payment summary</h2>
+        <p class="govuk-!-font-weight-bold">An example payment description</p>
+        <h3 class="govuk-body govuk-!-margin-bottom-0">Total amount:</h3>
+        <p class="govuk-heading-l govuk-!-padding-top-0 govuk-!-margin-bottom-0">£20.00</p>
+      </div>
+    </div>
+
+  </div>
+
+
+
+{% endblock %}
